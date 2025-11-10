@@ -1,0 +1,47 @@
+name: Releaser
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  npm:
+    name: npm
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Use cached node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            node-modules-
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Publish to npm
+        run: bun publish --access public
+        env:
+          BUN_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - name: Create GitHub Release
+        uses: stacksjs/action-releaser@v1.2.6
+        with:
+          files: |
+            bin/open-api-linux-x64
+            bin/open-api-linux-arm64
+            bin/open-api-windows-x64.exe
+            bin/open-api-darwin-x64
+            bin/open-api-darwin-arm64
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
