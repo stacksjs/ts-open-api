@@ -1,4 +1,5 @@
-export interface BinaryConfig {
-  from: string
+export interface OpenAPIConfig {
   verbose: boolean
 }
+
+export type OpenAPIOptions = Partial<OpenAPIConfig>
