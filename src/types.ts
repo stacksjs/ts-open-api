@@ -169,12 +169,34 @@ export interface TagObject {
 export interface GeneratorOptions {
   input: string
   output: string
+  /** Use `export type` instead of `export interface` where possible */
   exportType?: boolean
+  /** Sort types alphabetically */
   alphabetize?: boolean
+  /** Generate readonly properties */
   immutable?: boolean
+  /** Allow arbitrary properties via index signature */
   additionalProperties?: boolean
+  /** Treat schema objects as non-nullable by default */
   defaultNonNullable?: boolean
+  /** Generate path params as string literal types */
   pathParamsAsTypes?: boolean
+  /** Support array length validation in types */
   supportArrayLength?: boolean
+  /** Suppress console output */
   silent?: boolean
+  /** Add header comment to output file */
+  header?: boolean
+  /** Custom header comment */
+  headerComment?: string
+  /** Include descriptions as JSDoc comments */
+  includeDescriptions?: boolean
+  /** Include examples in JSDoc comments */
+  includeExamples?: boolean
+  /** Transform function to modify schema before processing */
+  transform?: (schema: SchemaObject) => SchemaObject
+  /** Post-transform to modify generated TypeScript */
+  postTransform?: (typescript: string) => string
+  /** Inject custom types at the beginning of the file */
+  inject?: string
 }
