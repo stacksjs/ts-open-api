@@ -1,24 +1,39 @@
-import { CAC } from 'cac'
+#!/usr/bin/env bun
+
+import { CLI } from '@stacksjs/clapp'
+import { generateTypes } from '../src/generator'
 import { version } from '../package.json'
 
-const cli = new CAC('my-cli')
+const cli = new CLI('open-api')
 
-interface CliOption {
-  from: string
-  verbose: boolean
+interface GenerateOptions {
+  output: string
+  alphabetize?: boolean
+  immutable?: boolean
+  silent?: boolean
 }
 
 cli
-  .command('start', 'Start the Reverse Proxy Server')
-  .option('--from <from>', 'The URL to proxy from')
-  .option('--verbose', 'Enable verbose logging')
-  .example('reverse-proxy start --from localhost:5173 --to my-project.localhost')
-  .action(async (options?: CliOption) => {
-    if (!options?.from) {
-      console.error('Missing --from option')
+  .command('<input>', 'Generate TypeScript types from OpenAPI schema')
+  .option('--output <output>', 'Output file path', { default: './api-types.ts' })
+  .option('--alphabetize', 'Alphabetize types')
+  .option('--immutable', 'Generate readonly properties')
+  .option('--silent', 'Silent mode')
+  .example('open-api openapi.json --output api-types.ts')
+  .example('open-api schema.json --output types.ts --alphabetize')
+  .action(async (input: string, options: GenerateOptions) => {
+    try {
+      await generateTypes({
+        input,
+        output: options.output,
+        alphabetize: options.alphabetize,
+        immutable: options.immutable,
+        silent: options.silent,
+      })
     }
-    else {
-      console.log('Options:', options)
+    catch (error) {
+      console.error('Error generating types:', error)
+      process.exit(1)
     }
   })
 
