@@ -2,7 +2,7 @@
   "name": "ts-open-api",
   "type": "module",
   "version": "0.0.0",
-  "description": "A simple TypeScript starter kit using Bun.",
+  "description": "Native OpenAPI to TypeScript generator - a simple, fast alternative to openapi-typescript.",
   "author": "Chris Breuer <chris@stacksjs.org>",
   "license": "MIT",
   "homepage": "https://github.com/stacksjs/ts-open-api#readme",
