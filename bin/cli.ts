@@ -63,6 +63,7 @@ cli
   })
 
 cli.command('version', 'Show the version of the CLI').action(() => {
+  // eslint-disable-next-line no-console
   console.log(version)
 })
 
