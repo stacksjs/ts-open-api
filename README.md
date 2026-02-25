@@ -10,7 +10,7 @@
 
 A blazingly fast, native OpenAPI to TypeScript type generator built with Bun. Generate TypeScript types from OpenAPI 3.0 schemas with zero runtime overhead.
 
-## Why ts-open-api?
+## Why ts-open-api
 
 - ⚡️ **Lightning Fast** - Built with Bun for maximum performance
 - 🎯 **Zero Runtime** - Pure TypeScript types with no runtime dependencies
@@ -251,9 +251,11 @@ await generateTypes({
   input: './openapi.json',
   output: './api-types.ts',
   headerComment: `/**
+
  * Custom API Types
  * Generated on ${new Date().toISOString()}
  * DO NOT EDIT MANUALLY
+
  */`,
 })
 ```
@@ -277,8 +279,10 @@ export interface User {
   /** The unique identifier for the user */
   readonly "id": string
   /**
+
    * The user's full name
    * @example "John Doe"
+
    */
   readonly "name": string
   /** The user's email address */
@@ -373,6 +377,7 @@ bun test
 ```
 
 The project includes comprehensive tests covering:
+
 - Basic schema types (string, number, boolean, array)
 - Object types with properties
 - Nested objects
