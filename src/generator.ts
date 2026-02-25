@@ -300,7 +300,7 @@ export class OpenAPITypeScriptGenerator {
     }
 
     // Handle additional properties
-    if (schema.additionalProperties && schema.additionalProperties !== false) {
+    if (schema.additionalProperties && (schema.additionalProperties as unknown) !== false) {
       if (typeof schema.additionalProperties === 'object') {
         const valueType = this.generateSchemaType(schema.additionalProperties, depth + 1)
         parts.push(`${indent}[key: string]: ${valueType}`)
