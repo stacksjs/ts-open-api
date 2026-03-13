@@ -2,7 +2,7 @@
 
 ## About
 
-Native OpenAPI to TypeScript generator — a simple, fast alternative to openapi-typescript.
+ts-open-api is a native OpenAPI to TypeScript type generator built with Bun. It converts OpenAPI 3.0 and 3.1 schemas (local or remote) into zero-runtime TypeScript types, supporting schema composition (allOf/anyOf/oneOf), reference resolution, JSDoc generation, and custom type transformations. The project provides both a CLI (`open-api`) and a programmatic API (`generateTypes`, `OpenAPITypeScriptGenerator`) with extensive configuration options including immutable types, alphabetical sorting, and post-processing hooks.
 
 ## Linting
 
