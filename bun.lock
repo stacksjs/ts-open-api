@@ -5,7 +5,7 @@
     "": {
       "name": "ts-open-api",
       "devDependencies": {
-        "better-dx": "^0.2.3",
+        "better-dx": "^0.2.7",
         "pickier": "^0.1.20",
       },
     },
