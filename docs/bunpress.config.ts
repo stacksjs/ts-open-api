@@ -1,7 +1,7 @@
-import type { BunPressConfig } from 'bunpress'
+import type { BunPressConfig } from '@stacksjs/bunpress'
 
 export default {
-  name: 'ts-open-api',
+  title: 'ts-open-api',
   description: 'Blazingly fast OpenAPI to TypeScript type generator built with Bun',
   themeConfig: {
     nav: [
